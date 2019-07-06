@@ -1,0 +1,8 @@
+{
+  "name": "meetapp",
+  "version": "1.0.0",
+  "description": "Events Aggregator App",
+  "main": "index.js",
+  "author": "Robert Marinho",
+  "license": "MIT"
+}
