@@ -1,14 +1,18 @@
 import { Router } from 'express';
+import UserController from './controllers/UserController';
 
-const Routes = new Router();
+const routes = new Router();
 
 // Root GET Route
-Routes.get('/', (req, res) =>
+routes.get('/', (req, res) =>
   res.status(200).json({
     status: 'OK',
     app: 'Meetapp',
-    description: 'Events Aggregator App',
+    description: 'Events Aggregator Apps',
   })
 );
 
-export default Routes;
+// Store User
+routes.post('/users', UserController.store);
+
+export default routes;
