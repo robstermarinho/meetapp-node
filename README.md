@@ -25,3 +25,9 @@ To start the server at `http://localhost:3334` run the following command:
 ```
 yarn runserver
 ```
+
+##### Endpoints
+
+- Create User - POST - `/users`
+- Obtain JTW Token - POST - `/sessions`
+- Update Authenticated User - PUT - `/users`
