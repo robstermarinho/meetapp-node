@@ -5,15 +5,6 @@ import authMiddleware from './middleware/auth';
 
 const routes = new Router();
 
-// Root GET Route
-routes.get('/', (req, res) =>
-  res.status(200).json({
-    status: 'OK',
-    app: 'Meetapp',
-    description: 'Events Aggregator Apps',
-  })
-);
-
 // Store User
 routes.post('/users', UserController.store);
 routes.post('/sessions', SessionController.store);
