@@ -1,4 +1,4 @@
 export default {
-  secret: '9f7dfeb46931c1dc80b0ebaca59ac024', // meetapp_{PASS}
+  secret: process.env.APP_SECRET,
   expiresIn: '5d',
 };

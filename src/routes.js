@@ -4,7 +4,9 @@ import SessionController from './controllers/SessionController';
 import authMiddleware from './middleware/auth';
 
 const routes = new Router();
-
+routes.get('/debugsentry', (req, res) => {
+  throw new Error('My first Sentry error!');
+});
 // Store User
 routes.post('/users', UserController.store);
 routes.post('/sessions', SessionController.store);
