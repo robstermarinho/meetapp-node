@@ -10,15 +10,17 @@ Events Aggregator App - REST Api using Node and Sequelize
 yarn install
 ```
 
-### 2) Run the Migrations
+### 2) Create the `.env` file
 
-You might change the database credentials in the file `./src/config/database.js` and then run the following command:
+Create the `.env` file based on `.env.example` file.
+
+### 3) Run the Migrations
 
 ```
 yarn sequelize db:migrate
 ```
 
-### 3) Start the server
+### 4) Start the server
 
 To start the server at `http://localhost:3334` run the following command:
 
