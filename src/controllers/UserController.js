@@ -103,9 +103,9 @@ class UserController {
       return res.status(401).json({ error: 'Old password id invalid.' });
     }
 
-    const { id, name, updatedAt } = await user.update(req.body);
+    const { id, name, updatedAt, avatar_id } = await user.update(req.body);
 
-    return res.json({ user: { id, name, email, updatedAt } });
+    return res.json({ user: { id, name, email, updatedAt, avatar_id } });
   }
 }
 
