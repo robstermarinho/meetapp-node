@@ -1,5 +1,6 @@
 import 'dotenv/config';
 import Youch from 'youch';
+import path from 'path';
 import express from 'express';
 import * as Sentry from '@sentry/node';
 import sentryConfig from './config/sentry';
@@ -24,6 +25,11 @@ class App {
     this.server.use(Sentry.Handlers.requestHandler());
     // Accept Json
     this.server.use(express.json());
+    // Serve static files
+    this.server.use(
+      '/files',
+      express.static(path.resolve(__dirname, '..', 'tmp', 'uploads'))
+    );
   }
 
   // Set the routes
