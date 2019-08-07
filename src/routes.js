@@ -20,6 +20,8 @@ routes.post('/sessions', SessionController.store);
 routes.use(authMiddleware);
 routes.put('/users', UserController.update);
 
+// List all meetups of the loggen in user
+routes.get('/meetups', MeetupController.index);
 // Store meetups
 routes.post('/meetups', MeetupController.store);
 // Update meetups
