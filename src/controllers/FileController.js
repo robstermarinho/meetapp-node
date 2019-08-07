@@ -1,4 +1,3 @@
-import * as Yup from 'yup';
 import File from '../models/File';
 
 class FileController {

@@ -21,6 +21,7 @@ export default async (req, res, next) => {
   try {
     // Promisify return a function so we call it with the callback parameters of the original function.
     const decoded = await promisify(jwt.verify)(token, authConfig.secret);
+    req.userID = decoded.id;
     // Send session to the request
     req.session = decoded;
     return next();
