@@ -168,6 +168,30 @@ class MeetupController {
     const meetups = await Meetup.findAll(query);
     return res.json({ meetups });
   }
+
+  async delete(req, res) {
+    // Get the user logged in
+    const userID = req.session.id;
+
+    const meetup = await Meetup.findByPk(req.params.id);
+
+    if (meetup.user_id !== userID) {
+      return res
+        .status(401)
+        .json({ error: 'This user cannot delete this meetup.' });
+    }
+
+    if (meetup.past) {
+      return res
+        .status(400)
+        .json({ error: 'Impossible to delete past meetups.' });
+    }
+
+    await meetup.destroy();
+    return res.send({
+      satus: 'ok',
+    });
+  }
 }
 
 export default new MeetupController();
