@@ -1,6 +1,8 @@
 import Meetup from '../models/Meetup';
 import User from '../models/Users';
 import Subscription from '../models/Subscription';
+import MeetupNotificationMail from '../app/jobs/MeetupNotificationMail';
+import Queue from '../lib/Queue';
 
 class SubscriptionController {
   async store(req, res) {
@@ -54,7 +56,8 @@ class SubscriptionController {
       user_id: userID,
       meetup_id: meetup.id,
     });
-
+    const user = await User.findByPk(userID);
+    await Queue.add(MeetupNotificationMail.key, { meetup, subscription, user });
     return res.json(subscription);
   }
 }

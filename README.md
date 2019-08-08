@@ -1,6 +1,6 @@
-# Events Aggregator App
+# Meetup - Events Scheduler App
 
-Events Aggregator App - REST Api using Node and Sequelize
+This is a solution to Events Scheduler. Built as a REST Api using Node.js and Sequelize
 
 ## Get started
 
@@ -33,3 +33,10 @@ yarn runserver
 - Create User - POST - `/users`
 - Obtain JTW Token - POST - `/sessions`
 - Update Authenticated User - PUT - `/users`
+- List of meetups in a day - GET - `/meetups`
+- List of meetups that the user is organizing - GET - `/organizing`
+- Store a meetup - POST - `/meetups`
+- Update a meetup - PUT - `/meetups/:id`
+- Delete a meetup - DELETE - `/meetups/:id`
+- Subscribe to a meetup - POST - `/meetups/:id/subscriptions`
+- Store a file - POST - `/files`

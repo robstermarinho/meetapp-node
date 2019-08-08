@@ -1,0 +1,23 @@
+<strong>Hi, {{ organizer }}</strong>
+<p>There is a new subscription to the meetup <strong>{{meetup.title}}</strong></p>
+<table style="margin: 0; mso-table-lspace: 0; mso-table-rspace: 0; padding: 0; width: 660px;" width="660"
+  cellspacing="0" cellpadding="0" border="1">
+  <thead>
+    <tr>
+      <td
+        style="color: rgb(20, 141, 141); font-family: 'Open Sans', font-weight:bold, sans-serif; font-size: 14px; letter-spacing: 0.02em; line-height: 23px;"
+        align="left" valign="top">User
+      </td>
+      <td
+        style="color: rgb(20, 141, 141); font-family: 'Open Sans', font-weight:bold,sans-serif; font-size: 14px; letter-spacing: 0.02em; line-height: 23px;"
+        align="left" valign="top">Subscription Date
+      </td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{ user }}</td>
+      <td>{{ date }} </td>
+    </tr>
+  </tbody>
+</table>
