@@ -4,7 +4,8 @@ class Subscription extends Model {
   static init(sequelize) {
     super.init(
       {
-        subscribed_at: Sequelize.DATE,
+        created_at: Sequelize.DATE,
+        updated_at: Sequelize.DATE,
       },
       {
         sequelize,
@@ -14,7 +15,7 @@ class Subscription extends Model {
   }
 
   static associate(models) {
-    this.belongsTo(models.Subscription, {
+    this.belongsTo(models.Meetup, {
       foreignKey: 'meetup_id',
       as: 'meetup',
     });

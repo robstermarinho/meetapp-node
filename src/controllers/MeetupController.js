@@ -130,9 +130,6 @@ class MeetupController {
     const { date, page } = req.query;
     const p = page || 1;
     const query = {
-      where: {
-        user_id: req.session.id,
-      },
       order: ['date'],
       limit: 10,
       offset: 10 * p - 10,
@@ -164,6 +161,41 @@ class MeetupController {
         [Op.between]: [startOfDay(parseDate), endOfDay(parseDate)],
       };
     }
+
+    const meetups = await Meetup.findAll(query);
+    return res.json({ meetups });
+  }
+
+  async organizing(req, res) {
+    const { page } = req.query;
+    const p = page || 1;
+    const query = {
+      where: {
+        user_id: req.session.id,
+      },
+      order: ['date'],
+      limit: 10,
+      offset: 10 * p - 10,
+      include: [
+        {
+          model: File,
+          as: 'banner',
+          attributes: ['name', 'path', 'url'],
+        },
+        {
+          model: User,
+          as: 'user',
+          attributes: ['id', 'name'],
+          include: [
+            {
+              model: File,
+              as: 'avatar',
+              attributes: ['name', 'path', 'url'],
+            },
+          ],
+        },
+      ],
+    };
 
     const meetups = await Meetup.findAll(query);
     return res.json({ meetups });
