@@ -1,3 +1,4 @@
+import { Op } from 'sequelize';
 import Meetup from '../models/Meetup';
 import User from '../models/Users';
 import Subscription from '../models/Subscription';
@@ -59,6 +60,29 @@ class SubscriptionController {
     const user = await User.findByPk(userID);
     await Queue.add(MeetupNotificationMail.key, { meetup, subscription, user });
     return res.json(subscription);
+  }
+
+  async index(req, res) {
+    const subscriptions = await Subscription.findAll({
+      where: {
+        user_id: req.session.id,
+      },
+      include: [
+        {
+          model: Meetup,
+          as: 'meetup',
+          where: {
+            date: {
+              [Op.gt]: new Date(),
+            },
+          },
+          required: true,
+        },
+      ],
+      order: [['meetup', 'date']],
+    });
+
+    return res.json(subscriptions);
   }
 }
 

@@ -35,5 +35,8 @@ routes.delete('/meetups/:id', MeetupController.delete);
 // Store meetups
 routes.post('/meetups/:id/subscriptions', SubscriptionController.store);
 
+// List all new meetups that the user is subcribed at
+routes.get('/subscriptions', SubscriptionController.index);
+
 routes.post('/files', upload.single('file'), FileController.store);
 export default routes;
